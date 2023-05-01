@@ -1,19 +1,21 @@
 import PySimpleGUI as sg
 from list_reservations import open_window
+from specific_reservation import open_window as open_window_reservation
 
 def main():
     layout = [[sg.Button("List reservations", key="-LIST-")],
               [sg.Button("Get reservation details", key="-DETAILS-")],
-              [sg.Button("Open Window", key="-OPEN-")],
-              [sg.Button("Exit", key="exit")],
+              [sg.Button("Exit", key="-EXIT-")],
               ]
-    window = sg.Window("Main Window", layout)
+    window = sg.Window("Hotel Kampot - Reservations", layout)
     while True:
         event, values = window.read()
-        if event == "exit" or event == sg.WIN_CLOSED:
+        if event == "-EXIT-" or event == sg.WIN_CLOSED:
             break
-        if event == "-LIST-":
+        elif event == "-LIST-":
             open_window()
+        elif event == "-DETAILS-":
+            open_window_reservation()
 
     window.close()
 

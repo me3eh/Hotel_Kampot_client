@@ -7,7 +7,7 @@ reservation_object_list = []
 list_of_names = []
 
 def initialize():
-    reservations_list = sr.getReservations()
+    reservations_list = sr.get_reservations()
     for reservation in reservations_list:
         reservation_object_list.append(Reservation(reservation))
     list_of_names = list(map(get_names, reservation_object_list))
