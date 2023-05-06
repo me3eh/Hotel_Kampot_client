@@ -3,11 +3,11 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from soap.requests import Requests
-from models.reservation import Reservation
+# from models.reservation import Reservation
 import zeep
 
 def get_names(n):
-    return f"Room number: {n.getRoomNumber()}"
+    return f"Room number: {n.room_number}"
 
 
 def open_window():
@@ -27,7 +27,7 @@ def open_window():
                   ]),
               ]], k='layout_principal', expand_x=True)],
 
-              [sg.Input("Yas", key="-CODE-INPUT-")],
+              [sg.Input("", key="-CODE-INPUT-")],
               [sg.Button("Check code", key='-CHECK-')],
               [sg.Button('Go back to menu', key="-EXIT-")]]
     window = sg.Window("Reservation check", layout, modal=True)
@@ -41,10 +41,8 @@ def open_window():
             try:
                 reservation = sr.get_reservation_by_code(values['-CODE-INPUT-'])
             except zeep.exceptions.Fault:
-                window["-ROOM-NUMBER-"].update("asdfasdfas")
-                sg.popup_error("There is no reservations with that code exists")
+                sg.popup_error("No reservation with that code exists", keep_on_top=True)
                 continue
-            sg.popup_notify("Reservation found")
             window["-ROOM-NUMBER-"].update(reservation.room_number)
             window["-FROM-"].update(reservation.from_date)
             window["-TO-"].update(reservation.to_date)

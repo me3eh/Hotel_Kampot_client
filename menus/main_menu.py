@@ -1,5 +1,6 @@
 import PySimpleGUI as sg
 from list_reservations import open_window
+from models.quit_exception import QuitException
 from specific_reservation import open_window as open_window_reservation
 
 def main():
@@ -13,7 +14,11 @@ def main():
         if event == "-EXIT-" or event == sg.WIN_CLOSED:
             break
         elif event == "-LIST-":
-            open_window()
+            try:
+                open_window()
+            except QuitException:
+                pass
+
         elif event == "-DETAILS-":
             open_window_reservation()
 
