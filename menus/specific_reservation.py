@@ -3,8 +3,8 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from soap.requests import Requests
-# from models.reservation import Reservation
 import zeep
+
 
 def get_names(n):
     return f"Room number: {n.room_number}"

@@ -22,15 +22,16 @@ class Requests:
         return reservations_list_object
 
     def get_pdf_confirmation(self, number):
-        dd2 = self.client.service.get_pdf(f"{number}")
-        bytes = b64decode(dd2["pdf"])
-        filename = f"./{dd2['pdf_name']}"
+        result = self.client.service.get_pdf(f"{number}")
+        bytes = b64decode(result["pdf"])
+        filename = result['pdf_name']
+        filepath = f"./{filename}"
 
-        f = open(filename, 'wb')
+        f = open(filepath, 'wb')
         f.write(bytes)
         f.close()
 
-        subprocess.call(["xdg-open", filename])
+        subprocess.call(["xdg-open", filepath])
 
     def get_reservation_by_code(self, number):
         return Reservation(self.client.service.get_reservation_by_code(f"{number}"))
