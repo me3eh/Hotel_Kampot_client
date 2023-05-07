@@ -1,12 +1,11 @@
 import PySimpleGUI as sg
 import sys
 import os
-from soap.requests import Requests
 import zeep
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)) + "/..")
 from models.quit_exception import QuitException
-
+from soap.requests import Requests
 
 def get_names(n):
     return f"Room number: {n.room_number}"
