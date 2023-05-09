@@ -31,15 +31,15 @@ def open_window():
                         sg.Listbox([], size=(20, 4), enable_events=True, key='-LIST-'),
                         sg.Column([
                             [sg.Text("Room number")],
-                            [sg.Input('Multiline\n', size=(10, 20), key="-ROOM-NUMBER-", readonly=True)]
+                            [sg.Input('', size=(10, 20), key="-ROOM-NUMBER-", readonly=True)]
                         ]),
                       sg.Column([
                             [sg.Text("From")],
-                            [sg.Input('Multiline\n', size=(10, 20), key="-FROM-", readonly=True)]
+                            [sg.Input('', size=(10, 20), key="-FROM-", readonly=True)]
                         ]),
                       sg.Column([
                           [sg.Text("To")],
-                          [sg.Input('Multiline\n', size=(10, 20), key="-TO-", readonly=True)]
+                          [sg.Input('', size=(10, 20), key="-TO-", readonly=True)]
                       ]),
                   ]], k='layout_principal', expand_x=True)],
 

@@ -11,7 +11,7 @@ class Requests:
     def __init__(self):
         settings = zeep.Settings(strict=False, xml_huge_tree=True, xsd_ignore_sequence_order=True)
 
-        self.client = zeep.Client('http://localhost:3000/reservations/wsdl', settings=settings,
+        self.client = zeep.Client('http://localhost:3001/reservations/wsdl', settings=settings,
                                   wsse=UsernameToken('username', 'password'))
 
     def get_reservations(self):
